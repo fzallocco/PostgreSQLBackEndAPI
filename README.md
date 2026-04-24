@@ -7,6 +7,11 @@ node v: 24.14.0, ts v: 5.9.3, and npx v: 11.9.0. See other repo (https://github.
 
 To run the project in Docker (recommended), execute the commands below:
 
+After cloning the repo, add a .env file with the below environment variables:
+
+DATABASE_URL="postgresql://postgres:secret@localhost:5432/postgres"
+PORT=3000
+
 1. `docker compose up --build` (builds image for the first time)
 
 File-specific execution:
