@@ -15,7 +15,7 @@ File-specific execution:
 
 `docker compose -f docker-compose.test.yml up -d` Run this to run backend app and db in Docker
 
-Next, get inside the app container and run `npx prisma migrate dev`.
+Next, get inside the app container and run `npx prisma migrate dev`. To continue using the app in Docker, make curl requests following the examples in the api-test.txt file.
 
 2. `docker compose down` to stop containers (add -v to wipe the DB volume)
 
