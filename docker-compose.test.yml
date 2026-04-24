@@ -1,0 +1,39 @@
+services:
+  db:
+    image: postgres:18.1
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres:/var/lib/postgresql
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile 
+    volumes:
+      - .:/usr/src/app #hot reload during dev
+      - /usr/src/app/node_modules #keep dependencies inside container
+    environment:
+      DATABASE_URL: postgresql://postgres:secret@db:5432/postgres
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+  studio:
+    build: .
+    command: sh -c "cd /usr/src/app && HOST=0.0.0.0 npx prisma studio --config=./prisma.config.ts --port 5555 --browser none"
+    environment:
+      DATABASE_URL: postgresql://postgres:secret@db:5432/postgres
+    depends_on:
+      - db
+    ports:
+      - "5555:5555"
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+      
+volumes:
+  postgres:
