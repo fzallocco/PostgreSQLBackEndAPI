@@ -3,7 +3,7 @@
 this is a boilerplate backend app for any future project, involving REST API and a postgreSQL database.
 
 I followed Alex Rusin's tutorial (https://www.youtube.com/watch?v=1EQ9RD8NonE), but added a few changes to the tsconfig.json and package.json files to ensure high compatibility of the code with the versions of Node.js and TypeScript I have:
-node v: 24.14.0, ts v: 5.9.3, and npx v: 11.9.0
+node v: 24.14.0, ts v: 5.9.3, and npx v: 11.9.0. See other repo (https://github.com/fzallocco/rest-api-with-prisma-and-postgres)
 
 To run the project in Docker (recommended), execute the commands below:
 
